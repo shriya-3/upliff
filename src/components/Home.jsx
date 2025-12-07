@@ -7,11 +7,7 @@ function Home() {
 
       {/* Hero Section */}
       <div className="relative w-full h-[400px] md:h-[600px] lg:h-[800px]"> 
-        <img
-          src="/homeHero.png"
-          alt="Hero"
-          className="w-full h-full object-cover"
-        />
+        <img src="/homeHero.png" alt="Hero" className="w-full h-full object-cover"/>
 
         {/* Text */}
         <div className="font-lexend absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 mt-[100px]">
@@ -20,7 +16,7 @@ function Home() {
             Explore. Grow. Upliff.
           </p>
           <Link
-            to="/tours"
+            to="/resources"
             className="mt-6 px-6 py-3 bg-stone-100 text-black font-semibold rounded hover:bg-zinc-300 transition"
           >
             Start Your Journey
