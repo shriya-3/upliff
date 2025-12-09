@@ -7,7 +7,7 @@ const therapists = [
     name: "Dr. Aisha Khan",
     gender: "female",
     specialties: ["Anxiety", "panic", "ocd", "phobias"],
-    img: "/therapist_f1.png",
+    img: "/aisha.jpg",
     bio: {
       approach:
         "Warm and collaborative, helping clients break avoidance patterns and reduce intrusive thoughts while strengthening emotional resilience.",
@@ -21,7 +21,7 @@ const therapists = [
     name: "Dr. Daniel Kim",
     gender: "male",
     specialties: ["Anxiety", "stress"],
-    img: "/therapist_m1.png",
+    img: "/daniel.jpg",
     bio: {
       approach:
         "Structured, practical guidance emphasizing coping strategies, measurable progress, and stress reduction for high-performance individuals.",
@@ -37,7 +37,7 @@ const therapists = [
     name: "Dr. Isabella Martinez",
     gender: "female",
     specialties: ["Depression", "bipolar"],
-    img: "/therapist_f2.png",
+    img: "/isabelle.jpg",
     bio: {
       approach:
         "Supportive care focused on mood stabilization, rebuilding motivation, and improving daily functioning through collaborative planning.",
@@ -51,7 +51,7 @@ const therapists = [
     name: "Dr. Marcus Johnson",
     gender: "male",
     specialties: ["Depression", "mood"],
-    img: "/therapist_m2.png",
+    img: "/marcus.jpg",
     bio: {
       approach:
         "Encouraging approach focusing on behavioral activation, restoring purpose, and building sustainable routines.",
@@ -67,7 +67,7 @@ const therapists = [
     name: "Dr. Chloe Nguyen",
     gender: "female",
     specialties: ["Eating", "body-image"],
-    img: "/therapist_f3.png",
+    img: "/chloe.jpg",
     bio: {
       approach:
         "Empowering care centered on body acceptance, emotional healing, and healthy relationships with food.",
@@ -81,7 +81,7 @@ const therapists = [
     name: "Dr. Ethan Rossi",
     gender: "male",
     specialties: ["Eating", "body-image"],
-    img: "/therapist_m3.png",
+    img: "/ethan.jpg",
     bio: {
       approach:
         "Structured and accountability-focused, helping clients regain control, build coping skills, and reduce compulsive eating patterns.",
@@ -97,7 +97,7 @@ const therapists = [
     name: "Dr. Layla Hassan",
     gender: "female",
     specialties: ["PTSD", "trauma"],
-    img: "/therapist_f4.png",
+    img: "/layla.jpg",
     bio: {
       approach:
         "Gentle, trauma-informed care emphasizing emotional safety, grounding, and gradual processing to restore trust.",
@@ -111,7 +111,7 @@ const therapists = [
     name: "Dr. Noah Clarke",
     gender: "male",
     specialties: ["PTSD", "trauma"],
-    img: "/therapist_m4.png",
+    img: "/noah.jpg",
     bio: {
       approach:
         "Direct, grounded approach helping clients confront avoidance, build stability, and take structured steps toward recovery.",
@@ -127,7 +127,7 @@ const therapists = [
     name: "Dr. Meera Shah",
     gender: "female",
     specialties: ["Psychotic", "schizophrenia"],
-    img: "/therapist_f5.png",
+    img: "/meera.jpg",
     bio: {
       approach:
         "Structured treatment supporting coping, daily functioning, and emotional regulation while partnering with medical providers.",
@@ -141,7 +141,7 @@ const therapists = [
     name: "Dr. Caleb White",
     gender: "male",
     specialties: ["Psychotic", "schizophrenia"],
-    img: "/therapist_m5.png",
+    img: "/caleb.jpg",
     bio: {
       approach:
         "Warm, stabilizing presence helping clients manage sensory overwhelm, improve relationships, and build a predictable daily rhythm.",
@@ -157,7 +157,7 @@ const therapists = [
     name: "Dr. Priya Rao",
     gender: "female",
     specialties: ["Personality", "bpd"],
-    img: "/therapist_f6.png",
+    img: "/priya.jpg",
     bio: {
       approach:
         "Warm, attentive support helping clients build emotional regulation, repair relationships, and develop insight.",
@@ -171,7 +171,7 @@ const therapists = [
     name: "Dr. Lucas Rivera",
     gender: "male",
     specialties: ["Personality", "bpd"],
-    img: "/therapist_m6.png",
+    img: "/lucas.jpg",
     bio: {
       approach:
         "Encouraging care supporting self-understanding, relationship stability, and long-term emotional resilience.",
@@ -275,27 +275,29 @@ export default function Home() {
       <div className="relative w-full h-[400px] md:h-[600px] lg:h-[500px] bg-cream"> 
         
         {/* Text */}
-        <div className="relative w-full h-[65vh] flex items-center justify-center px-10 ml-[450px]">
+        <div className="relative w-full h-[65vh] flex items-center justify-center px-10">
+        <div className="flex w-full max-w-6xl mx-auto items-center">
+
             {/* Text */}
-            <div className="font-lexend flex flex-col justify-center text-darkGreen1 w-1/2">
-                <h1 className="text-5xl md:text-7xl font-bold mb-4">SCHEDULE AN APPOINTMENT</h1>
-                <p className="text-base md:text-2xl">
-                Find balance. Find support.
-                </p>
-                <p className="text-base md:text-2xl">
-                Match with our expert therapists.
-                </p>
+            <div className="w-1/2 text-darkGreen1 font-lexend pr-6">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 translate-x-16">SCHEDULE AN APPOINTMENT</h1>
+            <p className="text-base md:text-2xl translate-x-16">Find balance. Find support.</p>
+            <p className="text-base md:text-2xl translate-x-16">Match with our expert therapists.</p>
             </div>
 
             {/* Image */}
-            <div className="w-1/2 flex justify-center mr-[800px] mb-[40px]">
-                <img 
-                src="/scheduleGiraffe.png" 
-                alt="Schedule" 
-                className="max-w-[80%] h-auto rounded-lg"
-                />
+            <div className="w-1/2 flex justify-end -translate-x-14">
+            <img
+                src="/scheduleGiraffe.png"
+                alt="Schedule"
+                className="w-[70%] h-auto rounded-lg translate-x-6"
+            />
             </div>
+
         </div>
+        </div>
+
+
     </div>
 
 
@@ -305,7 +307,7 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-2xl text-black mb-4 mt-[20px] mb-[40px]">Our Therapists Are Trusted & Acclaimed for Their Excellence</h2>
-            <img src="/scheduleAward.png" alt="Hero" className="w-[120%] h-[120%] mb-[30px]" />
+            <img src="/scheduleAward.png" alt="Hero" className="w-auto h-auto mb-[30px]" />
 
         </div>
         </div>
@@ -363,16 +365,32 @@ export default function Home() {
           </div>
         ) : (
           <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-3xl font-bold mb-6">Your Best Match</h3>
+        <h3 className="text-3xl font-bold mb-6">Your Best Match</h3>
 
-            <div className="bg-white text-darkGreen1 p-6 rounded-xl shadow-xl text-left">
-              <img src={match.img} className="rounded-xl w-64 mx-auto mb-4" />
-              <p className="text-2xl font-bold">{match.name}</p>
-              <p className="mt-3"><strong>Approach:</strong> {match.bio.approach}</p>
-              <p className="mt-1"><strong>Experience:</strong> {match.bio.experience}</p>
-              <p className="mt-1"><strong>Credentials:</strong> {match.bio.credentials}</p>
-              <p className="mt-1"><strong>Modalities:</strong> {match.bio.modalities}</p>
+        <div className="bg-white text-darkGreen1 p-6 rounded-xl shadow-xl flex flex-col md:flex-row items-center md:items-start gap-9">
+        {/* IMAGE */}
+        <img 
+            src={match.img}
+            className="rounded-xl w-64 h-full object-cover object-top"
+        />
+
+        {/* RIGHT CONTENT */}
+        <div className="flex-1 text-center md:text-center">
+            {/* NAME */}
+            <p className="text-3xl font-bold mb-9 mt-3">{match.name}</p>
+
+            {/* INFO */}
+            <div className="space-y-7 text-lg">
+
+            <p><strong>Approach:</strong> {match.bio.approach}</p>
+            <p><strong>Experience:</strong> {match.bio.experience}</p>
+            <p><strong>Credentials:</strong> {match.bio.credentials}</p>
+            <p><strong>Modalities:</strong> {match.bio.modalities}</p>
+
             </div>
+        </div>
+        </div>
+
 
             <div className="flex justify-between mt-10">
               <button
@@ -405,8 +423,8 @@ export default function Home() {
         <div className="flex overflow-x-auto space-x-6 pb-4">
           {therapists.map((t) => (
             <div key={t.id} className="min-w-[380px] bg-[#f5f2e8] rounded-xl shadow p-6 text-left">
-              <img src={t.img} className="w-full rounded-xl mb-4" />
-              <h3 className="text-xl font-bold text-darkGreen1">{t.name}</h3>
+              <img src={t.img} className="w-full rounded-xl mb-4 " />
+              <h3 className="text-xl font-bold text-black">{t.name}</h3>
               <p className="text-sm opacity-80 capitalize">
                 <strong>Specialties:</strong> {t.specialties.join(", ")}
               </p>
