@@ -5,6 +5,7 @@ import Home from "./components/Home.jsx";
 import Support from "./components/Support.jsx";
 import CommunityPage from "./components/CommunityPage.jsx";
 import Schedule from "./components/Schedule.jsx"
+import Blog from "./components/Blog.jsx";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/support" element={<Support />} /> 
         <Route path="/community/:id" element={<CommunityPage />} />
         <Route path="/schedule" element={<Schedule />} /> 
+        <Route path="/blog" element={<Blog />} /> 
+
       </Routes>
     </div>
   );
