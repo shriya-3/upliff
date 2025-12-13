@@ -610,7 +610,7 @@ Isolation can feel heavy and unrelenting, but it doesn’t have to define your e
       {/* BLOG GRID */}
         <div className="bg-cream flex justify-center">
         {/* container uses padding on left/right so cards do not touch edges; max-w controls overall width */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1300px] w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1300px] w-full mb-[30px]">
             {posts.map((post) => (
             <div
                 key={post.id}
