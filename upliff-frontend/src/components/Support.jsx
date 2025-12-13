@@ -57,6 +57,7 @@ export default function Support() {
               <CommunityCard
                 name={c.name}
                 description={c.description}
+                id={c._id}
                 image={c.image}
               />
             </Link>
