@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CommunityCard({ name, description, id, image }) {
   const navigate = useNavigate();
+  console.log("CommunityCard id:", id);
 
   return (
     <div
