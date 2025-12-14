@@ -1,50 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const mentalHealthTopics = [
-  {
-    id: "anxiety",
-    title: "Anxiety",
-    color: "bg-[#E6F2EC]",
-    description:
-      "Anxiety involves persistent worry, fear, or nervousness that can interfere with daily life. While occasional anxiety is normal, chronic anxiety may cause physical symptoms such as restlessness, racing thoughts, muscle tension, and fatigue. Treatment often includes therapy, grounding techniques, and skill-building to manage triggers."
-  },
-  {
-    id: "depression",
-    title: "Depression",
-    color: "bg-[#F2EDE6]",
-    description:
-      "Depression is more than sadness. It can affect mood, energy, motivation, sleep, and self-worth. People may experience hopelessness, loss of interest, or emotional numbness. With proper support, therapy, and care, individuals can regain stability and meaning."
-  },
-  {
-    id: "stress",
-    title: "Chronic Stress",
-    color: "bg-[#E8EEF5]",
-    description:
-      "Stress becomes harmful when it is prolonged and unmanaged. Chronic stress can impact physical health, concentration, mood, and relationships. Learning stress regulation, boundaries, and recovery practices is key to long-term well-being."
-  },
-  {
-    id: "trauma",
-    title: "Trauma & PTSD",
-    color: "bg-[#F1E7F5]",
-    description:
-      "Trauma can result from distressing experiences and may lead to symptoms like hypervigilance, avoidance, flashbacks, or emotional numbing. Trauma-informed therapy focuses on safety, stabilization, and gradual healing."
-  },
-  {
-    id: "selfesteem",
-    title: "Self-Esteem",
-    color: "bg-[#EAF4EC]",
-    description:
-      "Low self-esteem affects how we view ourselves and our worth. It can influence relationships, decision-making, and confidence. Therapy helps individuals build self-compassion, resilience, and a healthier self-image."
-  },
-  {
-    id: "burnout",
-    title: "Burnout",
-    color: "bg-[#F5ECEC]",
-    description:
-      "Burnout is emotional, mental, and physical exhaustion caused by prolonged stress. Common signs include detachment, fatigue, and reduced motivation. Recovery involves rest, boundaries, and reconnecting with values."
-  }
-];
+
 
 export default function Home() {
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -77,6 +34,105 @@ export default function Home() {
   }
 ];
 
+const plantTopics = [
+  {
+    id: "anxiety",
+    title: "Anxiety",
+    plantImg: "plant1.png",
+    potImg: "pot1.png",
+    color: "bg-[#E6F2EC]",
+    plantClass: "z-10 w-40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105",
+    potClass: "w-32 mt-[-226px]",
+    sections: {
+      feelsLike: "Constant worry, restlessness, racing thoughts, physical tension.",
+      why: "The brain stays in a heightened threat response, often from stress or past experiences.",
+      myths: "Anxiety is not weakness or overthinking — it’s a nervous system response.",
+      helps: "Grounding, breathing, therapy, structured coping skills.",
+      support: "When anxiety interferes with daily life or sleep."
+    }
+  },
+  {
+    id: "anxiety",
+    title: "Anxiety",
+    plantImg: "plant2.png",
+    potImg: "pot2.png",
+    color: "bg-[#E6F2EC]",
+    plantClass: "z-10 w-40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 mt-[53px]",
+    potClass: "w-32 mt-[-181px]",
+    sections: {
+      feelsLike: "Constant worry, restlessness, racing thoughts, physical tension.",
+      why: "The brain stays in a heightened threat response, often from stress or past experiences.",
+      myths: "Anxiety is not weakness or overthinking — it’s a nervous system response.",
+      helps: "Grounding, breathing, therapy, structured coping skills.",
+      support: "When anxiety interferes with daily life or sleep."
+    }
+  },
+  {
+    id: "anxiety",
+    title: "Anxiety",
+    plantImg: "plant3.png",
+    potImg: "pot3.png",
+    color: "bg-[#E6F2EC]",
+    plantClass: "z-10 w-40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 mt-[2px]",
+    potClass: "w-32 mt-[-237px]",
+    sections: {
+      feelsLike: "Constant worry, restlessness, racing thoughts, physical tension.",
+      why: "The brain stays in a heightened threat response, often from stress or past experiences.",
+      myths: "Anxiety is not weakness or overthinking — it’s a nervous system response.",
+      helps: "Grounding, breathing, therapy, structured coping skills.",
+      support: "When anxiety interferes with daily life or sleep."
+    }
+  },
+  {
+    id: "anxiety",
+    title: "Anxiety",
+    plantImg: "plant4.png",
+    potImg: "pot4.png",
+    color: "bg-[#E6F2EC]",
+    plantClass: "z-10 w-40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 mt-[69px]",
+    potClass: "w-32 mt-[-170px]",
+    sections: {
+      feelsLike: "Constant worry, restlessness, racing thoughts, physical tension.",
+      why: "The brain stays in a heightened threat response, often from stress or past experiences.",
+      myths: "Anxiety is not weakness or overthinking — it’s a nervous system response.",
+      helps: "Grounding, breathing, therapy, structured coping skills.",
+      support: "When anxiety interferes with daily life or sleep."
+    }
+  },
+  {
+    id: "anxiety",
+    title: "Anxiety",
+    plantImg: "plant5.png",
+    potImg: "pot5.png",
+    color: "bg-[#E6F2EC]",
+    plantClass: "z-10 w-40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 mt-[-3px]",
+    potClass: "w-32 mt-[-249px]",
+    sections: {
+      feelsLike: "Constant worry, restlessness, racing thoughts, physical tension.",
+      why: "The brain stays in a heightened threat response, often from stress or past experiences.",
+      myths: "Anxiety is not weakness or overthinking — it’s a nervous system response.",
+      helps: "Grounding, breathing, therapy, structured coping skills.",
+      support: "When anxiety interferes with daily life or sleep."
+    }
+  },
+  {
+    id: "anxiety",
+    title: "Anxiety",
+    plantImg: "plant6.png",
+    potImg: "pot6.png",
+    color: "bg-[#E6F2EC]",
+    plantClass: "z-10 w-40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 mt-[60px]",
+    potClass: "w-32 mt-[-176px]",
+    sections: {
+      feelsLike: "Constant worry, restlessness, racing thoughts, physical tension.",
+      why: "The brain stays in a heightened threat response, often from stress or past experiences.",
+      myths: "Anxiety is not weakness or overthinking — it’s a nervous system response.",
+      helps: "Grounding, breathing, therapy, structured coping skills.",
+      support: "When anxiety interferes with daily life or sleep."
+    }
+  },
+];
+
   return (
     <div className="w-full font-lexend">
 
@@ -102,6 +158,62 @@ export default function Home() {
         </div>
       </div>
 
+
+        <div className="bg-white py-24">
+        <h2 className="text-5xl font-bold text-darkGreen1 text-center mb-4">
+            Grow Your Understanding
+        </h2>
+        <p className="text-2xl text-darkGreen1 text-center mb-12">
+            Click on each plant to learn about the most common mental illness
+        </p>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-6 gap-16">
+            {plantTopics.map((plant) => (
+            <button
+                key={plant.id}
+                onClick={() => setActivePlant(plant)}
+                className="group relative flex flex-col items-center"
+            >
+                
+                {/* Plant */}
+                <img
+                src={plant.plantImg}
+                className={plant.plantClass}
+                />
+
+                {/* Pot */}
+                <img src={plant.potImg} className={plant.potClass} />
+
+                <p className="mt-4 text-xl font-semibold text-darkGreen1">
+                {plant.title}
+                </p>
+            </button>
+            ))}
+        </div>
+
+        <p className="text-center text-xl max-w-4xl mx-auto mt-[50px]">
+        Mental health is a part of our everyday lives, even if we don’t notice it.
+        It influences our ability to think, feel, make decisions, and perceive the
+        world around us. It is just as important to maintain mental health as it is
+        to maintain physical health because building a good mindset is what empowers
+        us to make good decisions. While it is normal for all of us to have our ups
+        and downs, if you or someone you know is experiencing frequent mood changes,
+        excessive worry, negative thoughts, or any other difficulties,{" "}
+        
+        <Link
+        to="/schedule"
+        className="font-bold underline hover:opacity-80"
+        >
+        schedule an appointment
+        </Link>
+        .
+    </p>
+
+        </div>
+
+
+        
+
       {/* MISSION */}
       <div className="text-darkGreen1 text-center mt-[80px] px-6">
         <h1 className="text-6xl font-bold mb-8">Our Mission</h1>
@@ -114,85 +226,6 @@ export default function Home() {
         </p>
       </div>
 
-      {/* WHAT IS MENTAL HEALTH */}
-      <div className="text-white bg-darkGreen1 text-center py-[100px] px-6">
-        <h1 className="text-6xl font-bold mb-12">
-          What is Mental Health?
-        </h1>
-
-        <p className="text-xl max-w-4xl mx-auto mb-[120px]">
-          Mental health is a part of our everyday lives, even if we don’t notice it.
-          It influences our ability to think, feel, make decisions, and perceive the
-          world around us. It is just as important to maintain mental health as it is
-          to maintain physical health. If you or someone you know is struggling,
-          consider{" "}
-          <Link
-            to="/schedule"
-            className="font-bold underline underline-offset-4 hover:opacity-80"
-          >
-            scheduling an appointment
-          </Link>
-          .
-        </p>
-
-        {/* TILE GRID */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mentalHealthTopics.map((topic) => (
-            <button
-              key={topic.id}
-              onClick={() => setSelectedTopic(topic)}
-              className={`rounded-2xl p-8 text-darkGreen1 shadow-lg hover:shadow-xl transition text-left ${topic.color}`}
-            >
-              <h3 className="text-2xl font-bold mb-2">{topic.title}</h3>
-              <p className="opacity-80">
-                Learn about symptoms, causes, and support options.
-              </p>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* FULL SCREEN POPUP */}
-      {selectedTopic && (
-        <div className="fixed inset-0 z-50 bg-cream flex flex-col mt-[52px]">
-
-          {/* TOP BAR */}
-          <div className="flex items-center px-8 py-6">
-            <button
-              onClick={() => setSelectedTopic(null)}
-              className="text-darkGreen1 font-semibold text-lg hover:opacity-70 transition"
-            >
-              ← Back
-            </button>
-          </div>
-
-          {/* POPUP CONTENT */}
-          <div className="flex-1 flex items-center justify-center px-6 pb-16 overflow-y-auto">
-            <div className="max-w-4xl w-full bg-white rounded-3xl shadow-xl p-12">
-
-              <h2 className="text-5xl font-bold text-darkGreen1 mb-6">
-                {selectedTopic.title}
-              </h2>
-
-              <div className="w-20 h-1 bg-darkGreen1 rounded mb-8"></div>
-
-              <p className="text-lg leading-8 text-darkGreen1">
-                {selectedTopic.description}
-              </p>
-
-              <div className="mt-12">
-                <Link
-                  to="/schedule"
-                  className="inline-block px-8 py-4 bg-darkGreen1 text-white font-semibold rounded-xl hover:opacity-90 transition"
-                >
-                  Schedule an Appointment
-                </Link>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* TESTIMONIALS */}
         <div className=" rounded-lg bg-darkGreen relative overflow-hidden mt-[80px] mb-[80px] mr-[200px] ml-[200px]">

@@ -23,7 +23,7 @@ const Navbar = () => {
 
         {/* Center */}
         <div className='flex justify-center flex-1'>
-          <Link to="/home" className='hover:text-[#244e3c] text-lg font-semibold'>UPLIFF</Link>
+          <Link to="/" className='hover:text-[#244e3c] text-lg font-semibold'>UPLIFF</Link>
         </div>
 
         {/* Right side */}
@@ -41,7 +41,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className='text-center flex-1'>
-          <Link to="/home" className='hover:text-[#244e3c] text-lg font-semibold'>UPLIFF</Link>
+          <Link to="/" className='hover:text-[#244e3c] text-lg font-semibold'>UPLIFF</Link>
         </div>
         <div></div>
       </div>

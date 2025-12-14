@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Blog() {
   // Palette A mapping (soft pastel)
@@ -596,54 +599,114 @@ Isolation can feel heavy and unrelenting, but it doesn’t have to define your e
 
   const [selectedPost, setSelectedPost] = useState(null);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredPosts = posts.filter((post) =>
+  post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  post.category.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
+
   return (
-    <div className="w-full font-lexend">
+    <div className="w-full font-lexend bg-cream">
       {/* HERO SECTION */}
       <div className="relative w-full h-[500px] bg-cream flex items-center justify-center">
-        <div className="text-darkGreen1 text-center px-6">
+        <div className="text-darkGreen1 text-center px-6---">
           <h1 className="text-5xl md:text-7xl font-bold mb-4">UPLIFF BLOG</h1>
           <p className="text-base md:text-2xl">Pull up a chair. Take a breath. You're in the right place.</p>
           <p className="text-base md:text-2xl">Insights to help you feel grounded and understood.</p>
         </div>
       </div>
 
+      {/* SEARCH BAR */}
+        <div className=" mt-[-100px] bg-cream mb-[100px] flex justify-center">
+        <div className="relative w-full max-w-xl">
+            {/* Search icon */}
+            <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </span>
+
+            <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search by Title or Category"
+            className="
+                w-full
+                pl-12
+                pr-6
+                py-4
+                rounded-full
+                border
+                border-gray-300
+                focus:outline-none
+                focus:ring-2
+                focus:ring-darkGreen1
+                text-darkGreen1
+                placeholder-gray-400
+                bg-white
+                shadow-sm
+            "
+            />
+        </div>
+        </div>
+
+
       {/* BLOG GRID */}
-        <div className="bg-cream flex justify-center">
-        {/* container uses padding on left/right so cards do not touch edges; max-w controls overall width */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1300px] w-full mb-[30px]">
-            {posts.map((post) => (
-            <div
-                key={post.id}
-                onClick={() => setSelectedPost(post)}
-                className="cursor-pointer bg-white rounded-xl shadow hover:shadow-xl transition p-5"
-            >
-                {/* colored image background */}
-                <div
-                className={`rounded-xl overflow-hidden mb-4 flex items-center justify-center ${categoryColor[post.category] || "bg-yellow-200"}`}
-                style={{ height: "170px" }}
-                >
-                {/* smaller image */}
-                <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-90 h-full object-cover rounded-lg opacity-95"
-                />
-                </div>
+        <div className="bg-cream min-h-[500px] flex justify-center">
+        <div className="w-full max-w-[1300px] px-6 pb-16">
 
-                {/* Category + read time */}
-                <div className="flex items-center justify-start gap-2 mb-2">
-                <span className="text-sm text-pink-600 font-semibold">
-                    {post.category}
-                </span>
-                <span className="text-sm text-gray-500 ml-2">{post.minutes}</span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-darkGreen1 mt-1">{post.title}</h3>
+            {filteredPosts.length === 0 ? (
+            /* NO RESULTS STATE */
+            <div className="flex flex-col items-center justify-center h-[250px] text-darkGreen1">
+                <p className="text-2xl font-semibold mb-2">No results found</p>
+                <p className="opacity-70">
+                Try searching by title or category
+                </p>
+                <img className = "w-[200px] mb-[20px]" src="noResult.png" alt="no result found" />
             </div>
-            ))}
+            ) : (
+            /* GRID */
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredPosts.map((post) => (
+                <div
+                    key={post.id}
+                    onClick={() => setSelectedPost(post)}
+                    className="cursor-pointer bg-white rounded-xl shadow hover:shadow-xl transition p-5"
+                >
+                    {/* colored image background */}
+                    <div
+                    className={`rounded-xl overflow-hidden mb-4 flex items-center justify-center ${categoryColor[post.category] || "bg-yellow-200"}`}
+                    style={{ height: "170px" }}
+                    >
+                    <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-90 h-full object-cover rounded-lg"
+                    />
+                    </div>
+
+                    {/* Category + read time */}
+                    <div className="flex items-center gap-2 mb-2">
+                    <span className="text-sm text-pink-600 font-semibold">
+                        {post.category}
+                    </span>
+                    <span className="text-sm text-gray-500 ml-2">
+                        {post.minutes}
+                    </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-darkGreen1">
+                    {post.title}
+                    </h3>
+                </div>
+                ))}
+            </div>
+            )}
+
         </div>
         </div>
+
 
       {/* FULL SCREEN POPUP */}
       {selectedPost && (
@@ -677,6 +740,8 @@ Isolation can feel heavy and unrelenting, but it doesn’t have to define your e
           </div>
         </div>
       )}
+
+      
     </div>
   );
 }
