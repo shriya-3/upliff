@@ -36,6 +36,10 @@ const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname, '../upliff-frontend/dist')));
 
+app.get('*splat', function(req, res) {
+  res.sendFile('index.html', {root: path.join(__dirname, '../upliff-frontend/dist/')});
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
