@@ -18,7 +18,7 @@ export default function PostPage() {
       .then(setPost)
       .catch(console.error);
   }, [id, postId]);
-
+  
   // Fetch comments
   useEffect(() => {
     fetch(`${API_URL}/api/posts/${postId}/comments`)
