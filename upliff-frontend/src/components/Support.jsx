@@ -17,7 +17,7 @@ export default function Support() {
   const filteredCommunities = communities.filter(c =>
     c.name.toLowerCase().includes(search.toLowerCase())
   );
-
+  console.log("Filtered Communities:", filteredCommunities);
   return (
     <div className="w-full bg-gradient-to-r from-blue-100 to-blue-200 py-16">
       <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-8">
