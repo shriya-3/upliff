@@ -291,6 +291,7 @@ const [activePlant, setActivePlant] = useState(null);
           <Link
             to="/resources"
             className="mt-6 px-6 py-3 bg-stone-100 text-black font-semibold rounded hover:bg-zinc-300 transition"
+            onClick={() => window.scrollTo(0, 0)}
           >
             Start Your Journey
           </Link>
