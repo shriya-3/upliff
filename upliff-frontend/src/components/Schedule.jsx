@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+//import TherapistSlotsDB from "../data/TherapistDB.jsx";
+import { use } from "react";
+import { initLocalDB, getAvailableSlots, bookSlot } from "../data/slotDB";
+import emailjs from "@emailjs/browser";
 
 const therapists = [
   /* Anxiety */
@@ -187,6 +191,89 @@ export default function Home() {
   const [responses, setResponses] = useState({});
   const [match, setMatch] = useState(null);
 
+  const dbRef = React.useRef();
+  const [showSlots, setShowSlots] = useState(false);
+  const [slots, setSlots] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [contactInfo, setContactInfo] = useState({ name: "", email: "", phone: "" });
+  const [appointmentConfirmed, setAppointmentConfirmed] = useState(false);
+
+
+
+  const upcomingWeekdays = [];
+  const today = new Date();
+  let count = 0;
+  let d = new Date(today);
+  while (count < 14) {
+    const day = d.getDay();
+    if (day !== 0 && day !== 6) { // skip Sunday/Saturday
+      upcomingWeekdays.push(new Date(d));
+      count++;
+    }
+    d.setDate(d.getDate() + 1);
+  }
+    const formatDate = (date) => {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    };
+
+    // Filter slots for the selected day
+    const slotsForSelectedDay = selectedDate
+      ? slots
+          .filter((s) => {
+            const slotDate = new Date(s.datetime).toLocaleDateString("en-CA"); // "YYYY-MM-DD"
+            return slotDate === formatDate(selectedDate);
+          })
+          .sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
+      : [];
+
+
+
+    const goToCalendar = () => {
+      const available = getAvailableSlots(match.id); // use ref
+      setSlots(available);
+      setShowSlots(true);
+      setSelectedDate(null);
+      setSelectedSlot(null);
+    };
+
+
+  const handleBookSlot = (slotId) => {
+    bookSlot(match.id, slotId); // mark as booked
+    setSlots(slots.filter((s) => s.id !== slotId)); // update UI
+  };
+const handleConfirmAppointment = async () => {
+  // book slot
+  bookSlot(selectedSlot.id);
+  setSlots(slots.filter(s => s.id !== selectedSlot.id));
+
+  // send email
+  await emailjs.send(
+    "service_f0mo7z7",
+    "template_2ozgzxl",
+    {
+      to_name: contactInfo.name,
+      to_email: contactInfo.email,
+      therapist: match.name,
+      date: new Date(selectedSlot.datetime).toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric"
+      }),
+      time: new Date(selectedSlot.datetime).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    },
+    "84tdCD4eO-pKrNyXF"
+  );
+
+  setAppointmentConfirmed(true);
+};
+
   const questions = [
     {
       field: "condition",
@@ -265,9 +352,6 @@ export default function Home() {
     setMatch(best);
   };
 
-  const goToCalendar = () => {
-    console.log("Navigate to calendar here");
-  };
 
   return (
     <div className="w-full font-lexend">
@@ -410,10 +494,178 @@ export default function Home() {
               >
                 Confirm & Schedule
               </button>
+              
+
             </div>
+            {showSlots && (
+            <div className="mt-10 bg-white p-6 rounded-xl text-darkGreen1">
+
+              {/* ✅ FINAL CONFIRMATION */}
+              {appointmentConfirmed && selectedSlot ? (
+                <div className="text-center py-10">
+                  <h3 className="text-3xl font-bold mb-4">
+                    Appointment Confirmed 🎉
+                  </h3>
+
+                  <p className="text-lg mb-2">
+                    Appointment for{" "}
+                    <strong>
+                      {new Date(selectedSlot.datetime).toLocaleDateString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                      })}{" "}
+                      at{" "}
+                      {new Date(selectedSlot.datetime).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                      })}
+                    </strong>
+                  </p>
+
+                  <p className="text-lg mb-6">
+                    Confirmation sent to <strong>{contactInfo.email}</strong>
+                  </p>
+
+                  <button
+                    onClick={() => {
+                      setAppointmentConfirmed(false);
+                      setSelectedSlot(null);
+                      setSelectedDate(null);
+                      setContactInfo({ name: "", email: "" });
+                    }}
+                    className="bg-darkGreen1 text-white py-2 px-6 rounded-xl"
+                  >
+                    Book Another Appointment
+                  </button>
+                </div>
+
+              ) : selectedSlot ? (
+                /* ✍️ CONTACT FORM */
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">
+                    Enter your contact info
+                  </h3>
+
+                  <p className="mb-4">
+                    <strong>
+                      {new Date(selectedSlot.datetime).toLocaleDateString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                      })}{" "}
+                      at{" "}
+                      {new Date(selectedSlot.datetime).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                      })}
+                    </strong>
+                  </p>
+
+                  <div className="space-y-4">
+                    <input
+                      type="text"
+                      placeholder="Full Name"
+                      value={contactInfo.name}
+                      onChange={(e) =>
+                        setContactInfo({ ...contactInfo, name: e.target.value })
+                      }
+                      className="w-full border rounded-lg p-2"
+                    />
+
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={contactInfo.email}
+                      onChange={(e) =>
+                        setContactInfo({ ...contactInfo, email: e.target.value })
+                      }
+                      className="w-full border rounded-lg p-2"
+                    />
+                  </div>
+
+                  <div className="flex justify-between mt-6">
+                    <button
+                      onClick={() => setSelectedSlot(null)}
+                      className="border border-darkGreen1 px-4 py-2 rounded-xl"
+                    >
+                      Back
+                    </button>
+
+                    <button
+                      onClick={handleConfirmAppointment}
+                      disabled={!contactInfo.name || !contactInfo.email}
+                      className="bg-darkGreen1 text-white px-4 py-2 rounded-xl disabled:opacity-50"
+                    >
+                      Confirm Appointment
+                    </button>
+                  </div>
+                </div>
+
+              ) : (
+                /* 📅 DATE + TIME SELECTION */
+                <>
+                  <p className="font-semibold mb-2">Select a day:</p>
+                  <div className="grid grid-cols-7 gap-2 mb-4">
+                    {upcomingWeekdays.map(date => {
+                      const readable = date.toLocaleDateString("en-US", {
+                        weekday: "short",
+                        month: "short",
+                        day: "numeric"
+                      });
+
+                      return (
+                        <button
+                          key={date.toISOString()}
+                          onClick={() => setSelectedDate(date)}
+                          className={`px-2 py-1 rounded-xl border text-sm ${
+                            selectedDate?.toDateString() === date.toDateString()
+                              ? "bg-darkGreen1 text-white"
+                              : "bg-gray-100"
+                          }`}
+                        >
+                          {readable}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {selectedDate && (
+                    <>
+                      <p className="font-semibold mb-2">Available times:</p>
+
+                      {slotsForSelectedDay.length === 0 ? (
+                        <p>No slots on this day.</p>
+                      ) : (
+                        <div className="grid grid-cols-2 gap-4">
+                          {slotsForSelectedDay.map(slot => (
+                            <button
+                              key={slot.id}
+                              onClick={() => setSelectedSlot(slot)}
+                              className="border rounded-lg p-3 hover:bg-darkGreen1 hover:text-white"
+                            >
+                              {new Date(slot.datetime).toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit"
+                              })}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+          )}
+
+
+
           </div>
         )}
+        
       </div>
+      
 
       {/* Therapist Cards */}
       <div className="bg-white py-20 px-6">
