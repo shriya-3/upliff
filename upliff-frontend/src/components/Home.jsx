@@ -343,6 +343,7 @@ const [activePlant, setActivePlant] = useState(null);
         <Link
         to="/schedule"
         className="font-bold underline hover:opacity-80"
+        onClick={() => window.scrollTo(0, 0)}
         >
         schedule an appointment
         </Link>
