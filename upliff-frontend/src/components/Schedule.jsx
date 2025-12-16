@@ -423,7 +423,9 @@ export default function Home() {
         <div className="flex overflow-x-auto space-x-6 pb-4">
           {therapists.map((t) => (
             <div key={t.id} className="min-w-[380px] bg-[#f5f2e8] rounded-xl shadow p-6 text-left">
-              <img src={t.img} className="w-full rounded-xl mb-4 " />
+              <div className="h-83 overflow-hidden rounded-xl mb-4">
+                <img src={t.img} className="w-full rounded-xl mb-4 " />
+              </div>
               <h3 className="text-xl font-bold text-black">{t.name}</h3>
               <p className="text-sm opacity-80 capitalize">
                 <strong>Specialties:</strong> {t.specialties.join(", ")}
