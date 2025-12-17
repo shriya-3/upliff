@@ -12,21 +12,21 @@ export default function Home() {
 
   const cards = [
     {
-      img: "/public/aware.png",
+      img: "/aware.png",
       title: "Awareness",
       summary:
         "Break the stigma surrounding mental health by providing accessible resources and meaningful education.",
       details: "Too often, mental health struggles are misunderstood, minimized, or hidden due to fear and stigma, preventing individuals from seeking the help they deserve. Our mission is rooted in the belief that mental health is just as important as physical health, and that understanding is the first step toward healing."
     },
     {
-      img: "/public/supportive.png",
+      img: "/supportive.png",
       title: "Support",
       summary:
         "Create safe, inclusive spaces where individuals feel validated and empowered to seek help.",
       details: "Through clear information, visual storytelling, and community-centered support, we aim to make mental health topics easier to understand and less intimidating to explore. We strive to create a safe, inclusive environment where individuals feel seen, validated, and empowered to seek help in ways that work best for them."
     },
     {
-      img: "/public/empower.png",
+      img: "/empower.png",
       title: "Empowerment",
       summary:
         "Encourage early support, reduce isolation, and inspire a culture where mental well-being is openly discussed.",
