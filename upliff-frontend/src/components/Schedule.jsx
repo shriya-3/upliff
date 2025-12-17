@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 //import TherapistSlotsDB from "../data/TherapistDB.jsx";
 import { use } from "react";
 import { initLocalDB, getAvailableSlots, bookSlot } from "../data/slotDB";
 import emailjs from "@emailjs/browser";
+
+
 
 const therapists = [
   /* Anxiety */
@@ -22,16 +24,44 @@ const therapists = [
   },
   {
     id: 2,
-    name: "Dr. Daniel Kim",
-    gender: "male",
-    specialties: ["Anxiety", "stress"],
-    img: "/daniel.jpg",
+    name: "Dr. Chloe Nguyen",
+    gender: "female",
+    specialties: ["Eating", "body-image"],
+    img: "/chloe.jpg",
     bio: {
       approach:
-        "Structured, practical guidance emphasizing coping strategies, measurable progress, and stress reduction for high-performance individuals.",
-      experience: "10 years clinical experience",
+        "Empowering care centered on body acceptance, emotional healing, and healthy relationships with food.",
+      experience: "9 years clinical experience",
+      credentials: "Ph.D., CEDS, Licensed Psychologist",
+      modalities: "CBT-E, Family-Based Therapy"
+    }
+  },
+  {
+    id: 10,
+    name: "Dr. Caleb White",
+    gender: "male",
+    specialties: ["Psychotic", "schizophrenia"],
+    img: "/caleb.jpg",
+    bio: {
+      approach:
+        "Warm, stabilizing presence helping clients manage sensory overwhelm, improve relationships, and build a predictable daily rhythm.",
+      experience: "11 years clinical experience",
       credentials: "Psy.D., Licensed Psychologist",
-      modalities: "CBT, Stress-Management Interventions"
+      modalities: "Supportive Psychotherapy, Psychoeducation"
+    }
+  },
+  {
+    id: 4,
+    name: "Dr. Marcus Johnson",
+    gender: "male",
+    specialties: ["Depression", "mood"],
+    img: "/marcus.jpg",
+    bio: {
+      approach:
+        "Encouraging approach focusing on behavioral activation, restoring purpose, and building sustainable routines.",
+      experience: "11 years clinical experience",
+      credentials: "LPC, Licensed Clinical Counselor",
+      modalities: "Solution-Focused Therapy, Behavioral Activation"
     }
   },
 
@@ -50,36 +80,26 @@ const therapists = [
       modalities: "CBT, Interpersonal Therapy (IPT)"
     }
   },
+
+
   {
-    id: 4,
-    name: "Dr. Marcus Johnson",
+    id: 5,
+    name: "Dr. Daniel Kim",
     gender: "male",
-    specialties: ["Depression", "mood"],
-    img: "/marcus.jpg",
+    specialties: ["Anxiety", "stress"],
+    img: "/daniel.jpg",
     bio: {
       approach:
-        "Encouraging approach focusing on behavioral activation, restoring purpose, and building sustainable routines.",
-      experience: "11 years clinical experience",
-      credentials: "LPC, Licensed Clinical Counselor",
-      modalities: "Solution-Focused Therapy, Behavioral Activation"
+        "Structured, practical guidance emphasizing coping strategies, measurable progress, and stress reduction for high-performance individuals.",
+      experience: "10 years clinical experience",
+      credentials: "Psy.D., Licensed Psychologist",
+      modalities: "CBT, Stress-Management Interventions"
     }
   },
 
+
   /* Eating Disorders */
-  {
-    id: 5,
-    name: "Dr. Chloe Nguyen",
-    gender: "female",
-    specialties: ["Eating", "body-image"],
-    img: "/chloe.jpg",
-    bio: {
-      approach:
-        "Empowering care centered on body acceptance, emotional healing, and healthy relationships with food.",
-      experience: "9 years clinical experience",
-      credentials: "Ph.D., CEDS, Licensed Psychologist",
-      modalities: "CBT-E, Family-Based Therapy"
-    }
-  },
+
   {
     id: 6,
     name: "Dr. Ethan Rossi",
@@ -140,20 +160,7 @@ const therapists = [
       modalities: "CBT-P, Medication Adherence Coaching"
     }
   },
-  {
-    id: 10,
-    name: "Dr. Caleb White",
-    gender: "male",
-    specialties: ["Psychotic", "schizophrenia"],
-    img: "/caleb.jpg",
-    bio: {
-      approach:
-        "Warm, stabilizing presence helping clients manage sensory overwhelm, improve relationships, and build a predictable daily rhythm.",
-      experience: "11 years clinical experience",
-      credentials: "Psy.D., Licensed Psychologist",
-      modalities: "Supportive Psychotherapy, Psychoeducation"
-    }
-  },
+
 
   /* Personality Disorders */
   {
@@ -199,7 +206,16 @@ export default function Home() {
   const [contactInfo, setContactInfo] = useState({ name: "", email: "", phone: "" });
   const [appointmentConfirmed, setAppointmentConfirmed] = useState(false);
 
+  const scrollRef = useRef(null);
 
+  const scroll = (direction) => {
+    if (!scrollRef.current) return;
+    const { clientWidth } = scrollRef.current;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -clientWidth : clientWidth,
+      behavior: "smooth",
+    });
+  };
 
   const upcomingWeekdays = [];
   const today = new Date();
@@ -359,7 +375,7 @@ const handleConfirmAppointment = async () => {
       <div className="relative w-full h-[400px] md:h-[600px] lg:h-[500px] bg-cream"> 
         
         {/* Text */}
-        <div className="relative w-full h-[65vh] flex items-center justify-center px-10">
+        <div className="relative mt-12 w-full h-[65vh] flex items-center justify-center px-10">
         <div className="flex w-full max-w-6xl mx-auto items-center">
 
             {/* Text */}
@@ -374,7 +390,7 @@ const handleConfirmAppointment = async () => {
             <img
                 src="/scheduleGiraffe.png"
                 alt="Schedule"
-                className="w-[70%] h-auto rounded-lg translate-x-6"
+                className="w-[65%] h-auto rounded-lg translate-x-6"
             />
             </div>
 
@@ -389,7 +405,7 @@ const handleConfirmAppointment = async () => {
       {/* QUIZ  */}
         <div className="w-full bg-white py-10 px-6 md:px-12 font-lexend">
 
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="w-100% text-center">
             <h2 className="text-2xl text-black mb-4 mt-[20px] mb-[40px]">Our Therapists Are Trusted & Acclaimed for Their Excellence</h2>
             <img src="/scheduleAward.png" alt="Hero" className="w-auto h-auto mb-[30px]" />
 
@@ -603,7 +619,7 @@ const handleConfirmAppointment = async () => {
                 </div>
 
               ) : (
-                /* 📅 DATE + TIME SELECTION */
+                /* DATE + TIME SELECTION */
                 <>
                   <p className="font-semibold mb-2">Select a day:</p>
                   <div className="grid grid-cols-7 gap-2 mb-4">
@@ -618,7 +634,7 @@ const handleConfirmAppointment = async () => {
                         <button
                           key={date.toISOString()}
                           onClick={() => setSelectedDate(date)}
-                          className={`px-2 py-1 rounded-xl border text-sm ${
+                          className={`px-2 py-2 rounded-xl border text-sm ${
                             selectedDate?.toDateString() === date.toDateString()
                               ? "bg-darkGreen1 text-white"
                               : "bg-gray-100"
@@ -668,15 +684,37 @@ const handleConfirmAppointment = async () => {
       
 
       {/* Therapist Cards */}
-      <div className="bg-white py-20 px-6">
-        <h2 className="text-4xl font-bold text-darkGreen1 text-center mb-10">
-          Meet Our Therapists
-        </h2>
-        <div className="flex overflow-x-auto space-x-6 pb-4">
+    <div className="bg-white py-20 px-6 flex flex-col items-center">
+      <h2 className="text-4xl font-bold text-darkGreen1 text-center mb-10">
+        Meet Our Therapists
+      </h2>
+
+      <div className="relative w-full flex justify-center items-center">
+        {/* Left arrow slightly outside with negative margin */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-0 -ml-0 bg-darkGreen1 text-white px-4 py-2 rounded hover:bg-teal-600 transition z-10"
+        >
+          ◀
+        </button>
+
+        {/* Scrollable cards container */}
+        <div
+          ref={scrollRef}
+          className="flex space-x-6 overflow-x-auto w-[90%] scrollbar-hide"
+        >
           {therapists.map((t) => (
-            <div key={t.id} className="min-w-[380px] bg-[#f5f2e8] rounded-xl shadow p-6 text-left">
-              <div className="h-83 overflow-hidden rounded-xl mb-4">
-                <img src={t.img} className="w-full rounded-xl mb-4 " />
+            <div
+              key={t.id}
+              className="flex-shrink-0 w-[calc(33.333%-16px)] bg-[#f5f2e8] rounded-xl shadow p-6 flex flex-col"
+            >
+              <div className="h-64 overflow-hidden rounded-xl mb-4">
+                <img
+                  src={t.img}
+                  className="w-full h-full object-cover rounded-xl"
+                  style={{ objectPosition: "center 30%" }}
+                  alt={t.name}
+                />
               </div>
               <h3 className="text-xl font-bold text-black">{t.name}</h3>
               <p className="text-sm opacity-80 capitalize">
@@ -689,7 +727,16 @@ const handleConfirmAppointment = async () => {
             </div>
           ))}
         </div>
+
+        {/* Right arrow slightly outside with negative margin */}
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-0 -mr-0 bg-darkGreen1 text-white px-4 py-2 rounded hover:bg-teal-600 transition z-10"
+        >
+          ▶
+        </button>
       </div>
+    </div>
     </div>
   );
 }

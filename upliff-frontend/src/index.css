@@ -4,6 +4,8 @@
 
 @import 'tailwindcss/utilities';
 
+
+
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -18,3 +20,11 @@
   will-change: transform;
 }
 
+/* add to globals or component */
+.resource-card {
+  @apply block rounded-2xl bg-white/80 backdrop-blur
+         p-6 shadow-sm hover:shadow-md
+         transition-all duration-300
+         hover:-translate-y-1
+         focus:outline-none focus:ring-2 focus:ring-teal-400;
+}

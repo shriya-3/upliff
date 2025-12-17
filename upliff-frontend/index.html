@@ -8,9 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+<style>
+@keyframes breathing {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); } /* slightly bigger */
+}
+
+.animate-breathing {
+  animation: breathing 6s ease-in-out infinite;
+}
+</style>

@@ -19,18 +19,18 @@ export default function Support() {
   );
   console.log("Filtered Communities:", filteredCommunities);
   return (
-    <div className="w-full bg-gradient-to-r from-blue-100 to-blue-200 py-16">
+    <div className="w-full bg-gradient-to-r from-blue-100 to-blue-200 py-16 font-lexend">
       <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-8">
         <div className="lg:w-1/2">
-          <h1 className="text-3xl font-bold mb-4 mt-10 text-gray-800">
+          <h1 className="text-4xl text-darkGreen1 md:text-6xl font-bold mb-4 mt-10">
             Explore Support Communities
           </h1>
-          <p className="text-gray-700">
+          <p className="text-gray-700 text-base md:text-2xl leading-relaxed">
             Find a community that resonates with you.
           </p>
         </div>
 
-        <div className="lg:w-1/2 flex justify-center">
+        <div className="lg:w-1/2 flex justify-end">
           <img
             src="/giraffe_support.png"
             alt="Support"
