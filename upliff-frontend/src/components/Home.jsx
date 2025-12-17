@@ -4,6 +4,36 @@ import { Link } from "react-router-dom";
 
 
 export default function Home() {
+    const [openIndex, setOpenIndex] = useState(null);
+
+  const toggle = (i) => {
+    setOpenIndex(openIndex === i ? null : i);
+  };
+
+  const cards = [
+    {
+      img: "/public/aware.png",
+      title: "Awareness",
+      summary:
+        "Break the stigma surrounding mental health by providing accessible resources and meaningful education.",
+      details: "Too often, mental health struggles are misunderstood, minimized, or hidden due to fear and stigma, preventing individuals from seeking the help they deserve. Our mission is rooted in the belief that mental health is just as important as physical health, and that understanding is the first step toward healing."
+    },
+    {
+      img: "/public/supportive.png",
+      title: "Support",
+      summary:
+        "Create safe, inclusive spaces where individuals feel validated and empowered to seek help.",
+      details: "Through clear information, visual storytelling, and community-centered support, we aim to make mental health topics easier to understand and less intimidating to explore. We strive to create a safe, inclusive environment where individuals feel seen, validated, and empowered to seek help in ways that work best for them."
+    },
+    {
+      img: "/public/empower.png",
+      title: "Empowerment",
+      summary:
+        "Encourage early support, reduce isolation, and inspire a culture where mental well-being is openly discussed.",
+      details: "By fostering awareness, empathy, and open conversation, we hope to encourage early support, reduce isolation, and inspire a culture where mental well-being is prioritized and openly discussed."
+    }
+  ];
+  
   const [selectedTopic, setSelectedTopic] = useState(null);
 
   const testimonials = [
@@ -298,10 +328,40 @@ const [activePlant, setActivePlant] = useState(null);
         </div>
       </div>
 
+{/* MISSION */}
+    <div className="mb-8 text-darkGreen1 text-center mt-[80px] px-6">
+      <h1 className="text-6xl font-bold mb-12">Our Mission</h1>
+
+      {/* Three main cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {cards.map((card, i) => (
+          <div key={i} className="bg-[#f5f2e8] rounded-2xl p-8 shadow hover:shadow-lg transition">
+            <img src={card.img} alt={card.title} className="w-22 h-22 justify-self-center mb-4" />
+            <h3 className="text-2xl font-semibold mb-2">{card.title}</h3>
+            <p>{card.summary}</p>
+
+            {/* Accordion toggle */}
+            <button
+              className="mt-4 text-teal-600 font-medium hover:underline"
+              onClick={() => toggle(i)}
+            >
+              {openIndex === i ? "Show Less ▲" : "Read More ▼"}
+            </button>
+
+            {/* Expanded content */}
+            {openIndex === i && (
+              <p className="mt-4 text-sm text-gray-700">{card.details}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+
 
         <div className="relative bg-cream py-14 overflow-hidden">
         <img src="bggreen.png" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"/>
-        <h2 className="text-5xl font-bold text-darkGreen1 text-center mb-4">
+        <h2 className="mt-4 text-5xl font-bold text-darkGreen1 text-center mb-4">
             Grow Your Understanding
         </h2>
         <p className="text-2xl text-darkGreen1 text-center mb-12">
@@ -451,20 +511,11 @@ const [activePlant, setActivePlant] = useState(null);
 
 
 
-      {/* MISSION */}
-      <div className="text-darkGreen1 text-center mt-[80px] px-6">
-        <h1 className="text-6xl font-bold mb-8">Our Mission</h1>
-        <p className="text-xl max-w-6xl mx-auto mb-[80px]">
-          We are dedicated to improving mental health awareness and breaking the stigma surrounding mental health conditions by providing accessible resources, meaningful education, and supportive spaces for learning and connection. Too often, mental health struggles are misunderstood, minimized, or hidden due to fear and stigma, preventing individuals from seeking the help they deserve. Our mission is rooted in the belief that mental health is just as important as physical health, and that understanding is the first step toward healing.
-        </p>
-        <p  className="text-xl max-w-6xl mx-auto mb-[80px]">
-          Through clear information, visual storytelling, and community-centered support, we aim to make mental health topics easier to understand and less intimidating to explore. We strive to create a safe, inclusive environment where individuals feel seen, validated, and empowered to seek help in ways that work best for them. By fostering awareness, empathy, and open conversation, we hope to encourage early support, reduce isolation, and inspire a culture where mental well-being is prioritized and openly discussed.
-        </p>
-      </div>
+
 
 
       {/* TESTIMONIALS */}
-        <div className=" rounded-lg bg-darkGreen1 relative overflow-hidden mt-[80px] ">
+        <div className=" rounded-lg bg-darkGreen1 relative overflow-hidden mt-[0px] ">
         <p className="text-white text-3xl text-center mt-[30px] font-bold ">
                 Why our users love Upliff.
               </p>

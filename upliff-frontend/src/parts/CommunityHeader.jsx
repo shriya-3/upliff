@@ -26,12 +26,12 @@ export default function CommunityHeader({ id, name, description, members, create
 
           {/* Buttons below the text */}
           <div className="flex gap-3 mt-4">
-            <button
+            {/*<button
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
               onClick={() => alert("Joining community...")}
             >
               Join Community
-            </button>
+            </button>*/}
 
             <button
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
