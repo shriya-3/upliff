@@ -50,26 +50,36 @@ export const generateInitialSlots = () => {
 
 // Step 2: Initialize DB if it doesn't exist
 export const initLocalDB = () => {
-  if (!localStorage.getItem("therapistDB")) {
+  const existing = localStorage.getItem("therapistDB");
+  if (!existing) {
     localStorage.setItem(
       "therapistDB",
       JSON.stringify(generateInitialSlots())
     );
   }
 };
-
 // Step 3: Get available slots for a therapist
 export const getAvailableSlots = (therapistId) => {
-  const db = JSON.parse(localStorage.getItem("therapistDB"));
+  initLocalDB(); // ← THIS WAS MISSING
+
+  const db = JSON.parse(localStorage.getItem("therapistDB")) || [];
   const therapist = db.find((t) => t.id === therapistId);
+
+  if (!therapist) return [];
+
   return therapist.slots.filter((s) => !s.booked);
 };
 
 // Step 4: Book a slot
 export const bookSlot = (therapistId, slotId) => {
-  const db = JSON.parse(localStorage.getItem("therapistDB"));
+  initLocalDB(); // ← ALSO REQUIRED
+
+  const db = JSON.parse(localStorage.getItem("therapistDB")) || [];
   const therapist = db.find((t) => t.id === therapistId);
+  if (!therapist) return;
+
   const slot = therapist.slots.find((s) => s.id === slotId);
   if (slot) slot.booked = true;
+
   localStorage.setItem("therapistDB", JSON.stringify(db));
 };
