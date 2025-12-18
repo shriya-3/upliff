@@ -19,24 +19,27 @@ const SEVERITY = [
 
 const QUESTIONS = [
   { text: "I have little interest or pleasure in doing activities I used to enjoy.", condition: "Depression" },
+  { text: "I experience physical symptoms like restlessness or sweaty palms.", condition: "Anxiety" },
+  { text: "I have a reduced need for sleep.", condition: "Personality Disorders" },
+  { text: "I have episodes of overeating followed by guilt.", condition: "Eating Disorders" },
+  { text: "I experience hallucinations others do not.", condition: "Psychosis" },
+
+
+
   { text: "I have noticed changes in my appetite or sleep pattern.", condition: "Depression" },
   { text: "I procrastinate or avoid dealing with important things.", condition: "Depression" },
 
-  { text: "I experience physical symptoms like restlessness or sweaty palms.", condition: "Anxiety" },
   { text: "I often worry a lot about minor issues.", condition: "Anxiety" },
   { text: "I believe I have a good future outlook.", condition: "Anxiety", reverse: true },
 
-  { text: "I have a reduced need for sleep.", condition: "Personality Disorders" },
   { text: "I switch between depressive and energetic states.", condition: "Personality Disorders" },
 
-  { text: "I have episodes of overeating followed by guilt.", condition: "Eating Disorders" },
   { text: "I am very concerned with food intake or weight.", condition: "Eating Disorders" },
   { text: "I engage in compensatory behaviors like excessive exercise or vomiting.", condition: "Eating Disorders" },
 
   { text: "I cannot get beyond long-past traumatic events or losses.", condition: "PTSD" },
   { text: "I experience flashbacks or intrusive memories.", condition: "PTSD" },
 
-  { text: "I experience hallucinations others do not.", condition: "Psychosis" },
   { text: "I have difficulty organizing my thoughts into speech.", condition: "Psychosis" },
   { text: "I feel like people are watching or paying special attention to me.", condition: "Psychosis" },
 ];

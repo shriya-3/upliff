@@ -28,11 +28,7 @@ app.use("/api/posts/:postId/comments", commentRoutes);
 
 // Serve React frontend (build folder)
 const __dirname = path.resolve();
-//app.use(express.static(path.join(__dirname, "build")));
 
-/*app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});*/
 
 app.use(express.static(path.join(__dirname, '../upliff-frontend/dist')));
 
@@ -44,3 +40,10 @@ app.get('*splat', function(req, res) {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+//app.use(express.static(path.join(__dirname, "build")));
+
+/*app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});*/
