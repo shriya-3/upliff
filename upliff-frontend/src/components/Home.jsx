@@ -304,10 +304,9 @@ const [activePlant, setActivePlant] = useState(null);
       {/* HERO SECTION */}
       <div className="relative w-full h-[850px]">
         <video
-        src="heroVid.mp4"
+        src="upliff_bg.mp4"
         autoPlay
         muted
-        loop
         playsInline
         className="w-full h-full object-cover fade-video"
       />
