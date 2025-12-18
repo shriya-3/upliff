@@ -13,11 +13,6 @@ export default function CommunityHeader({ id, name, description, members, create
 
             <div className="flex flex-col text-gray-500 text-sm mt-4 gap-2">
               <div className="flex items-center gap-2">
-                <FiUsers size={16} />
-                <span>{members} members</span>
-              </div>
-
-              <div className="flex items-center gap-2">
                 <FiCalendar size={16} />
                 <span>Created {new Date(created).toLocaleDateString()}</span>
               </div>
