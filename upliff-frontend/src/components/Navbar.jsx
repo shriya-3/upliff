@@ -49,10 +49,10 @@ const Navbar = () => {
       {/* Mobile dropdown */}
       {isOpen && (
         <div className='md:hidden flex flex-col items-center space-y-2 mt-2'>
-          <Link to="/resources" className="hover:text-[#244e3c] text-sm">RESOURCES</Link>
-          <Link to="/schedule" className="hover:text-[#244e3c] text-sm">SCHEDULE</Link>
-          <Link to="/support" className="hover:text-[#244e3c] text-sm">SUPPORT</Link>
-          <Link to="/blog" className="hover:text-[#244e3c] text-sm">BLOG</Link>
+          <Link to="/resources" className="hover:text-[#244e3c] text-sm" aria-label="Resource Page">RESOURCES</Link>
+          <Link to="/schedule" className="hover:text-[#244e3c] text-sm" aria-label="Schedule Page">SCHEDULE</Link>
+          <Link to="/support" className="hover:text-[#244e3c] text-sm" aria-label="Support Page">SUPPORT</Link>
+          <Link to="/blog" className="hover:text-[#244e3c] text-sm" aria-label="Blog Page">BLOG</Link>
         </div>
       )}
     </nav>

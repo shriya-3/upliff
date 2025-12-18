@@ -7,6 +7,7 @@ import CommunityPage from "./components/CommunityPage.jsx";
 import Schedule from "./components/Schedule.jsx"
 import Blog from "./components/Blog.jsx";
 import PostPage from "./components/PostPage.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
         <Route path="/community/:id" element={<CommunityPage />} />
         <Route path="/community/:id/post/:postId" element={<PostPage />} />
         <Route path="/schedule" element={<Schedule />} /> 
-        <Route path="/blog" element={<Blog />} /> 
-
+        <Route path="/blog" element={<Blog />} />  
         
       </Routes>
+      <Footer />
     </div>
   );
 }
