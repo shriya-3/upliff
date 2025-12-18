@@ -47,10 +47,10 @@ export default function PostPage() {
     }
   };
 
-  if (!post) return <div className="text-center mt-20">Loading post...</div>;
+  if (!post) return <div className="bg-cream text-center mt-20">Loading post...</div>;
 
   return (
-    <div className="max-w-3xl mt-14 mx-auto px-6 py-10">
+    <div className="max-w-3xl bg-cream mt-14 mx-auto px-6 py-10">
       <button
         onClick={() => navigate(`/community/${id}`)}
         className="mb-4 px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg"
