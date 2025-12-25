@@ -13,7 +13,7 @@ const therapists = [
     name: "Dr. Aisha Khan",
     gender: "female",
     specialties: ["Anxiety", "panic", "ocd", "phobias"],
-    img: "/aisha.jpg",
+    img: "/aisha.png",
     bio: {
       approach:
         "Warm and collaborative, helping clients break avoidance patterns and reduce intrusive thoughts while strengthening emotional resilience.",
@@ -27,7 +27,7 @@ const therapists = [
     name: "Dr. Chloe Nguyen",
     gender: "female",
     specialties: ["Eating", "body-image"],
-    img: "/chloe.jpg",
+    img: "/chloe.png",
     bio: {
       approach:
         "Empowering care centered on body acceptance, emotional healing, and healthy relationships with food.",
@@ -41,7 +41,7 @@ const therapists = [
     name: "Dr. Caleb White",
     gender: "male",
     specialties: ["Psychotic", "schizophrenia"],
-    img: "/caleb.jpg",
+    img: "/caleb.png",
     bio: {
       approach:
         "Warm, stabilizing presence helping clients manage sensory overwhelm, improve relationships, and build a predictable daily rhythm.",
@@ -52,16 +52,16 @@ const therapists = [
   },
   {
     id: 4,
-    name: "Dr. Marcus Johnson",
-    gender: "male",
-    specialties: ["Depression", "mood"],
-    img: "/marcus.jpg",
+    name: "Dr. Priya Rao",
+    gender: "female",
+    specialties: ["Personality", "bpd"],
+    img: "/priya.png",
     bio: {
       approach:
-        "Encouraging approach focusing on behavioral activation, restoring purpose, and building sustainable routines.",
-      experience: "11 years clinical experience",
-      credentials: "LPC, Licensed Clinical Counselor",
-      modalities: "Solution-Focused Therapy, Behavioral Activation"
+        "Warm, attentive support helping clients build emotional regulation, repair relationships, and develop insight.",
+      experience: "10 years clinical experience",
+      credentials: "Ph.D., Licensed Psychologist",
+      modalities: "DBT, Mindfulness-Based Therapy"
     }
   },
 
@@ -71,7 +71,7 @@ const therapists = [
     name: "Dr. Isabella Martinez",
     gender: "female",
     specialties: ["Depression", "bipolar"],
-    img: "/isabelle.jpg",
+    img: "/isabelle.png",
     bio: {
       approach:
         "Supportive care focused on mood stabilization, rebuilding motivation, and improving daily functioning through collaborative planning.",
@@ -87,7 +87,7 @@ const therapists = [
     name: "Dr. Daniel Kim",
     gender: "male",
     specialties: ["Anxiety", "stress"],
-    img: "/daniel.jpg",
+    img: "/daniel.png",
     bio: {
       approach:
         "Structured, practical guidance emphasizing coping strategies, measurable progress, and stress reduction for high-performance individuals.",
@@ -105,7 +105,7 @@ const therapists = [
     name: "Dr. Ethan Rossi",
     gender: "male",
     specialties: ["Eating", "body-image"],
-    img: "/ethan.jpg",
+    img: "/ethan.png",
     bio: {
       approach:
         "Structured and accountability-focused, helping clients regain control, build coping skills, and reduce compulsive eating patterns.",
@@ -121,7 +121,7 @@ const therapists = [
     name: "Dr. Layla Hassan",
     gender: "female",
     specialties: ["PTSD", "trauma"],
-    img: "/layla.jpg",
+    img: "/layla.png",
     bio: {
       approach:
         "Gentle, trauma-informed care emphasizing emotional safety, grounding, and gradual processing to restore trust.",
@@ -135,7 +135,7 @@ const therapists = [
     name: "Dr. Noah Clarke",
     gender: "male",
     specialties: ["PTSD", "trauma"],
-    img: "/noah.jpg",
+    img: "/noah.png",
     bio: {
       approach:
         "Direct, grounded approach helping clients confront avoidance, build stability, and take structured steps toward recovery.",
@@ -151,7 +151,7 @@ const therapists = [
     name: "Dr. Meera Shah",
     gender: "female",
     specialties: ["Psychotic", "schizophrenia"],
-    img: "/meera.jpg",
+    img: "/meera.png",
     bio: {
       approach:
         "Structured treatment supporting coping, daily functioning, and emotional regulation while partnering with medical providers.",
@@ -162,27 +162,28 @@ const therapists = [
   },
 
 
-  /* Personality Disorders */
+ 
   {
     id: 11,
-    name: "Dr. Priya Rao",
-    gender: "female",
-    specialties: ["Personality", "bpd"],
-    img: "/priya.jpg",
+    name: "Dr. Marcus Johnson",
+    gender: "male",
+    specialties: ["Depression", "mood"],
+    img: "/marcus.png",
     bio: {
       approach:
-        "Warm, attentive support helping clients build emotional regulation, repair relationships, and develop insight.",
-      experience: "10 years clinical experience",
-      credentials: "Ph.D., Licensed Psychologist",
-      modalities: "DBT, Mindfulness-Based Therapy"
+        "Encouraging approach focusing on behavioral activation, restoring purpose, and building sustainable routines.",
+      experience: "11 years clinical experience",
+      credentials: "LPC, Licensed Clinical Counselor",
+      modalities: "Solution-Focused Therapy, Behavioral Activation"
     }
   },
+  
   {
     id: 12,
     name: "Dr. Lucas Rivera",
     gender: "male",
     specialties: ["Personality", "bpd"],
-    img: "/lucas.jpg",
+    img: "/lucas.png",
     bio: {
       approach:
         "Encouraging care supporting self-understanding, relationship stability, and long-term emotional resilience.",
@@ -193,7 +194,7 @@ const therapists = [
   }
 ];
 
-export default function Home() {
+export default function Schedule() {
   const [step, setStep] = useState(0);
   const [responses, setResponses] = useState({});
   const [match, setMatch] = useState(null);
@@ -345,28 +346,47 @@ const handleConfirmAppointment = async () => {
   const next = () => setStep((s) => s + 1);
   const back = () => setStep((s) => s - 1);
 
-  const submit = () => {
-    let best = null;
-    let scoreBest = -1;
+const submit = () => {
+  let best = null;
+  let scoreBest = -1;
 
-    therapists.forEach((t) => {
-      let score = 0;
+  therapists.forEach((t) => {
+    let score = 0;
 
-      if (t.specialties.includes(responses.condition)) score += 5;
+    if (t.specialties.includes(responses.condition)) score += 5;
 
-      if (responses.goals === "Reduce symptoms" && t.bio.modalities.includes("CBT"))
-        score += 3;
-      if (responses.goals === "Understand myself deeply" && t.bio.modalities.includes("Mindfulness"))
-        score += 3;
+    switch (responses.goals) {
+      case "Reduce symptoms":
+        if (t.bio.modalities.includes("CBT") || t.bio.modalities.includes("CBT-P") || t.bio.modalities.includes("CBT-E")) score += 3;
+        break;
+      case "Improve daily functioning":
+        if (t.bio.modalities.includes("Behavioral Activation") || t.bio.modalities.includes("Supportive Therapy") || t.bio.modalities.includes("DBT Skills")) score += 3;
+        break;
+      case "Understand myself deeply":
+        if (t.bio.modalities.includes("Mindfulness") || t.bio.modalities.includes("Mindfulness-Based Therapy") || t.bio.modalities.includes("Interpersonal Therapy (IPT)")) score += 3;
+        break;
+      case "Improve relationships":
+        if (t.bio.modalities.includes("Family-Based Therapy") || t.bio.modalities.includes("Supportive Therapy") || t.bio.modalities.includes("DBT")) score += 3;
+        break;
+      case "Reduce emotional instability":
+        if (t.bio.modalities.includes("DBT") || t.bio.modalities.includes("DBT Skills")) score += 3;
+        break;
+      case "Develop confidence":
+        if (t.bio.modalities.includes("Solution-Focused Therapy") || t.bio.modalities.includes("Behavioral Activation")) score += 2;
+        break;
+      default:
+        break;
+    }
 
-      if (score > scoreBest) {
-        best = t;
-        scoreBest = score;
-      }
-    });
+    if (score > scoreBest) {
+      best = t;
+      scoreBest = score;
+    }
+  });
 
-    setMatch(best);
-  };
+  setMatch(best);
+};
+
 
 
   return (

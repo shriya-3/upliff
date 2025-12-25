@@ -11,9 +11,9 @@ const ANSWERS = [
 ];
 
 const SEVERITY = [
-  { max: 20, label: "Low likelihood", color: "bg-green-400" },
-  { max: 40, label: "Mild", color: "bg-yellow-400" },
-  { max: 60, label: "Moderate", color: "bg-orange-400" },
+  { max: 25, label: "Low likelihood", color: "bg-green-400" },
+  { max: 50, label: "Mild", color: "bg-yellow-400" },
+  { max: 75, label: "Moderate", color: "bg-orange-400" },
   { max: 100, label: "High likelihood", color: "bg-red-400" },
 ];
 
@@ -23,8 +23,6 @@ const QUESTIONS = [
   { text: "I have a reduced need for sleep.", condition: "Personality Disorders" },
   { text: "I have episodes of overeating followed by guilt.", condition: "Eating Disorders" },
   { text: "I experience hallucinations others do not.", condition: "Psychosis" },
-
-
 
   { text: "I have noticed changes in my appetite or sleep pattern.", condition: "Depression" },
   { text: "I procrastinate or avoid dealing with important things.", condition: "Depression" },
@@ -47,7 +45,14 @@ const QUESTIONS = [
 /* ---------------- HELPERS ---------------- */
 
 const shuffle = (array) => [...array].sort(() => Math.random() - 0.5);
-const getSeverity = (score) => SEVERITY.find((s) => score <= s.max);
+
+const getSeverity = (percent) =>
+  SEVERITY.find((s) => percent <= s.max);
+
+const MAX_ANSWER_VALUE = Math.max(...ANSWERS.map((a) => a.value));
+
+const getMaxScore = (condition) =>
+  QUESTIONS.filter((q) => q.condition === condition).length * MAX_ANSWER_VALUE;
 
 /* ---------------- COMPONENT ---------------- */
 
@@ -64,7 +69,7 @@ export default function MentalHealthQuiz() {
 
   const handleAnswer = (value) => {
     const q = questions[index];
-    const adjusted = q.reverse ? 5 - value : value;
+    const adjusted = q.reverse ? MAX_ANSWER_VALUE - value : value;
 
     setScores((prev) => ({
       ...prev,
@@ -83,32 +88,31 @@ export default function MentalHealthQuiz() {
 
       {/* ================= START SCREEN ================= */}
       {!started && (
-        <div className="p-8 text-center ">
-          <h2 className="text-2xl font-semibold">
-            Self-Reflection Quiz
-          </h2>
+        <div className="p-8 text-center">
+          <h2 className="text-2xl font-semibold">Self-Reflection Quiz</h2>
 
           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
             This short quiz is designed to help you reflect on how you’ve been
             feeling recently. It is <strong>not a diagnosis</strong>, but a way to
             better understand yourself and explore supportive resources.
           </p>
-          <img src="./magnifying.png" alt="Magnifying glass" className="mx-auto md:mx-0 w-64 h-64 justify-self-center"/>
 
+          <img
+            src="./magnifying.png"
+            alt="Magnifying glass"
+            className="mx-auto w-64 h-64"
+          />
 
           <button
             onClick={() => setStarted(true)}
-            className="mt-4 inline-flex items-center justify-center rounded-full 
-                       bg-pink-300 px-8 py-3 text-black font-medium
-                       hover:bg-pink-400 transition"
+            className="mt-4 rounded-full bg-pink-300 px-8 py-3 text-black font-medium hover:bg-pink-400 transition"
           >
             Start Quiz
           </button>
+
           <p className="mt-4 text-gray-500 text-sm">
             You can stop at any time. There are no right or wrong answers.
           </p>
-
-   
         </div>
       )}
 
@@ -121,12 +125,15 @@ export default function MentalHealthQuiz() {
 
           <p className="text-sm text-gray-600">
             <strong>This quiz is not a diagnosis.</strong> It is a self-reflection
-            tool meant to help you explore how you’re currently feeling and guide
-            you toward supportive resources.
+            tool meant to help you explore how you’re currently feeling. We recommend 
+            exploring our resources below to start your mental health journey.
           </p>
 
           {Object.entries(scores).map(([condition, score]) => {
-            const severity = getSeverity(score);
+            const maxScore = getMaxScore(condition);
+            const percent = Math.round((score / maxScore) * 100);
+            const severity = getSeverity(percent);
+
             return (
               <div key={condition}>
                 <div className="flex justify-between text-sm mb-1">
@@ -137,7 +144,7 @@ export default function MentalHealthQuiz() {
                 <div className="w-full bg-gray-200 rounded-full h-3">
                   <div
                     className={`${severity.color} h-3 rounded-full transition-all`}
-                    style={{ width: `${score}%` }}
+                    style={{ width: `${percent}%` }}
                   />
                 </div>
               </div>
@@ -146,8 +153,7 @@ export default function MentalHealthQuiz() {
 
           <p className="pt-4 text-sm text-gray-600">
             If any of these areas feel concerning or overwhelming, consider
-            reaching out to a trusted person or mental health professional and
-            explore our <strong>resources</strong> below.
+            reaching out to a trusted person or mental health professional.
           </p>
         </div>
       )}
@@ -168,8 +174,7 @@ export default function MentalHealthQuiz() {
               <button
                 key={a.label}
                 onClick={() => handleAnswer(a.value)}
-                className="w-full rounded-lg border border-gray-200 px-4 py-2 
-                           text-left hover:bg-teal-50 hover:border-teal-300 transition"
+                className="w-full rounded-lg border border-gray-200 px-4 py-2 text-left hover:bg-teal-50 hover:border-teal-300 transition"
               >
                 {a.label}
               </button>

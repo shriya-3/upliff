@@ -8,11 +8,14 @@ import Schedule from "./components/Schedule.jsx"
 import Blog from "./components/Blog.jsx";
 import PostPage from "./components/PostPage.jsx";
 import Resources from "./components/Resources.jsx";
+import Footer from "./components/Footer.jsx";
+import ScrollToTop from "./parts/Scroll.jsx";
 
 function App() {
   return (
     <div>
       <Navbar /> 
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} /> 
         <Route path="/home" element={<Home />} /> 
@@ -25,6 +28,8 @@ function App() {
 
         
       </Routes>
+      <Footer />
+      
     </div>
   );
 }
