@@ -104,14 +104,27 @@ export default function Resources() {
     </div>
 
   </div>
+    <nav className="sticky top-12 z-50 bg-darkGreen1 text-cream shadow-sm">
+    <div className="max-w-7xl mx-auto px-4 py-3">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 text-sm font-medium text-center">
+        
+        <a href="#anxiety" className="nav-btn">Anxiety</a>
+        <a href="#depression" className="nav-btn">Depression</a>
+        <a href="#eating" className="nav-btn">Eating</a>
+        <a href="#ptsd" className="nav-btn">PTSD</a>
+        <a href="#psychosis" className="nav-btn">Psychosis</a>
+        <a href="#personality" className="nav-btn">Personality</a>
 
+        </div>
+    </div>
+    </nav>
 
 
         
 
 
     {/* ANXIETY */}
-    <section className="w-full bg-red-100">
+    <section id="anxiety" className="scroll-mt-32 sm:scroll-mt-24 w-full bg-red-100">
     <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Left side */}
@@ -190,55 +203,50 @@ export default function Resources() {
     </section>
 
     {/* DEPRESSION (REVERSED) */}
-    <section className="w-full bg-rose-200">
-        <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
+    <section id="depression" className="scroll-mt-32 sm:scroll-mt-24 w-full bg-rose-200">
+    <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
 
-        {/* Tiles on left (reversed) */}
-        <div className="grid grid-cols-[40%_60%] gap-4">
-        {/* 4-7-8 Breathing spans both columns */}
-
-          <div className="grid grid-rows-2 gap-4">
-    
+        {/* Tiles / resources – on desktop this is left, on mobile below */}
+        <div className="order-2 md:order-1 grid grid-cols-[40%_60%] gap-4">
+        <div className="grid grid-rows-2 gap-4">
             <a
-                href="https://www.hilariousworld.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-teal-300 transition"
+            href="https://www.hilariousworld.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-teal-300 transition"
             >
-                <h4 className="font-semibold group-hover:underline">
-                    The Hilarious World of Depression
-                </h4>
-                <p className="text-sm text-gray-600 mt-1">
-                    The Hilarious World of Depression is a series of frank, moving, and, yes, funny conversations with top entertainers who have dealt with depression.
-                </p>
-                <span className="text-xs text-teal-600 mt-2 inline-block">
-                    Visit podcast →
-                </span>
+            <h4 className="font-semibold group-hover:underline">
+                The Hilarious World of Depression
+            </h4>
+            <p className="text-sm text-gray-600 mt-1">
+                The Hilarious World of Depression is a series of frank, moving, and, yes, funny conversations with top entertainers who have dealt with depression.
+            </p>
+            <span className="text-xs text-teal-600 mt-2 inline-block">
+                Visit podcast →
+            </span>
             </a>
             <a
-                href="https://www.nami.org/major-depression/walking-on-a-tight-rope-coping-with-depression/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-teal-300 transition"
+            href="https://www.nami.org/major-depression/walking-on-a-tight-rope-coping-with-depression/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-teal-300 transition"
             >
-                <h4 className="font-semibold group-hover:underline">
-                    Walking on a Tight Rope: Coping with Depression
-                </h4>
-                <p className="text-sm text-gray-600 mt-1">
-                    NAMI presents a blog written by Heather Loeb, where she shares her stories of navigating life with depression. She aims to help others feel less alone and lend her voice to those who can't use theirs.
-
-                </p>
-                <span className="text-xs text-teal-600 mt-2 inline-block">
-                    Visit blog →
-                </span>
+            <h4 className="font-semibold group-hover:underline">
+                Walking on a Tight Rope: Coping with Depression
+            </h4>
+            <p className="text-sm text-gray-600 mt-1">
+                NAMI presents a blog written by Heather Loeb, where she shares her stories of navigating life with depression. She aims to help others feel less alone and lend her voice to those who can't use theirs.
+            </p>
+            <span className="text-xs text-teal-600 mt-2 inline-block">
+                Visit blog →
+            </span>
             </a>
-
         </div>
         <GratitudeJar />
         </div>
 
-        {/* Image / Title */}
-        <div className="text-center md:order-2">
+        {/* Title / image – on desktop this is right, on mobile on top */}
+        <div className="order-1 md:order-2 text-center">
         <h2 className="text-3xl font-bold mb-6">Depression</h2>
         <img
             src="/clip_depression.png"
@@ -250,8 +258,9 @@ export default function Resources() {
     </div>
     </section>
 
+
     {/* EATING DISORDERS */}
-    <section className="w-full bg-indigo-200">
+    <section id="eating" className="scroll-mt-32 sm:scroll-mt-24 w-full bg-indigo-200">
     <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Image / Title */}
@@ -308,11 +317,11 @@ export default function Resources() {
     </section>
 
     {/* PTSD (REVERSED) */}
-    <section className="w-full bg-slate-200">
+    <section id="ptsd"className="scroll-mt-32 sm:scroll-mt-24 w-full bg-slate-200">
     <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Tiles (left) */}
-        <div className="grid grid-cols-[70%_30%] gap-4">
+        <div className="order-2 md:order-1 grid grid-cols-[70%_30%] gap-4">
             <PaperBoatsModal />
 
             <a
@@ -338,7 +347,7 @@ export default function Resources() {
         </div>
 
         {/* Image / Title */}
-        <div className="text-center md:order-1">
+        <div className="order-1 md:order-2 text-center md:order-1">
         <h2 className="text-3xl font-bold mb-6">PTSD</h2>
         <img
             src="/clip_ptsd.png"
@@ -351,7 +360,7 @@ export default function Resources() {
     </section>
 
     {/* PSYCHOTIC DISORDERS */}
-    <section className="w-full bg-green-200">
+    <section id="psychosis" className="scroll-mt-32 sm:scroll-mt-24 w-full bg-green-200">
     <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Image / Title */}
@@ -387,16 +396,16 @@ export default function Resources() {
     </section>
 
     {/* PERSONALITY DISORDERS (REVERSED) */}
-    <section className="w-full bg-emerald-200">
+    <section id="personality"className="scroll-mt-32 sm:scroll-mt-24 w-full bg-emerald-200">
     <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
 
         {/* Tiles (left) */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 md:order-2">
+        <div className="order-2 md:order-1 grid grid-cols-1 sm:grid-cols-1 gap-8 md:order-2">
         <CheckIn />
         </div>
 
         {/* Image / Title */}
-        <div className="text-center md:order-2">
+        <div className="order-1 md:order-2 text-center md:order-2">
         <h2 className="text-3xl font-bold mb-6">Personality Disorders</h2>
         <img
             src="/clip_pers.png"
