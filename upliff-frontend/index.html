@@ -58,12 +58,17 @@
   </body>
 </html>
 <style>
-@keyframes breathing {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.035); } /* slightly bigger */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.animate-breathing {
-  animation: breathing 6s ease-in-out infinite;
+.animate-scroll {
+  animation: scroll 100s linear infinite;
 }
+
 </style>
