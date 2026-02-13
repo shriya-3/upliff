@@ -38,29 +38,64 @@ export default function Home() {
 
   const testimonials = [
   {
-    text: "Upliff helped me understand what I was feeling instead of ignoring it. The resources felt calm and not overwhelming.",
-    author: "High School Student",
-    context: "Anxiety Support"
+    text: "I was feeling overwhelmed and unsure how to sort through my emotions. The resources helped me break things down into manageable steps and understand what I was experiencing. It made everything feel less heavy.",
+    author: "Maya R.",
+    role: "High School Student"
   },
   {
-    text: "I didn’t realize how burnt out I was until I started reading through the site. It felt validating instead of judgmental.",
-    author: "College Student",
-    context: "Burnout & Stress"
+    text: "I didn’t realize how close I was to burnout until I started reading through the guides. The explanations felt validating and practical, and they helped me create healthier routines without feeling judged.",
+    author: "Daniel K.",
+    role: "College Student"
   },
   {
-    text: "The way mental health topics are explained made it feel approachable. I finally felt comfortable asking for help.",
-    author: "Teen User",
-    context: "Mental Health Awareness"
+    text: "I was struggling silently and didn’t know where to begin. The content helped me recognize patterns in my thoughts and gave me the confidence to reach out for support. It felt reassuring and clear.",
+    author: "Sofia L.",
+    role: "Postpartum Mother"
   },
   {
-    text: "Upliff doesn’t make you feel rushed. Everything feels gentle, supportive, and easy to understand.",
-    author: "Parent",
-    context: "Family Support"
+    text: "Everything felt chaotic and hard to explain. The way topics were broken down made it easier to understand what was happening and how to respond calmly. It helped me feel more in control.",
+    author: "James T.",
+    role: "Parent"
   },
   {
-    text: "The design alone made me feel calmer. The content made me feel seen.",
-    author: "Anonymous User",
-    context: "User Experience"
+    text: "I had been feeling isolated and unsure how to talk about it. The tone was gentle and thoughtful, which made it easier to reflect and take small steps toward reconnecting with others.",
+    author: "Evelyn M.",
+    role: "Grandparent"
+  },
+  {
+    text: "I often felt like my worries were irrational, but the information helped me see that they were valid and manageable. The practical suggestions gave me a starting point to feel steadier.",
+    author: "Aiden P.",
+    role: "Middle School Student"
+  },
+  {
+    text: "There was so much stress building up that I didn’t notice it anymore. The resources helped me slow down, identify what was draining me, and make small adjustments that truly helped.",
+    author: "Rachel S.",
+    role: "Working Professional"
+  },
+  {
+    text: "I struggled to put words to what I was experiencing. The explanations made everything feel approachable and less intimidating. It gave me clarity and a sense of direction.",
+    author: "Marcus L.",
+    role: "Graduate Student"
+  },
+  {
+    text: "I felt stuck in negative thought patterns and didn’t know how to shift them. The exercises and examples helped me challenge those thoughts in a practical way. It felt empowering.",
+    author: "Nina C.",
+    role: "New Parent"
+  },
+  {
+    text: "The information was clear and calm, which made it easier to process difficult topics. It helped me reflect without feeling overwhelmed or rushed.",
+    author: "Thomas B.",
+    role: "Teacher"
+  },
+  {
+    text: "I appreciated how everything was explained in simple, compassionate language. It helped me understand what I was feeling and consider healthy next steps.",
+    author: "Lila M.",
+    role: "Teen User"
+  },
+  {
+    text: "I had been ignoring how stressed I was for a long time. Reading through the site helped me acknowledge it and take small actions that made a real difference in my daily life.",
+    author: "Carlos D.",
+    role: "Small Business Owner"
   }
 ];
 
@@ -297,6 +332,8 @@ const plantTopics = [
 
 const [activePlant, setActivePlant] = useState(null);
 
+const topRow = testimonials.slice(0, 6);
+const bottomRow = testimonials.slice(6, 12);
 
   return (
     <div className="w-full font-lexend bg-cream">
@@ -334,7 +371,7 @@ const [activePlant, setActivePlant] = useState(null);
       {/* Three main cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {cards.map((card, i) => (
-          <div key={i} className="bg-[#f5f2e8] rounded-2xl p-8 shadow hover:shadow-lg transition">
+          <div key={i} className="bg-[#f5f2e8] rounded-2xl p-8 shadow hover:shadow-lg transition outline-solid">
             <img src={card.img} alt={card.title} className="w-22 h-22 justify-self-center mb-4" />
             <h3 className="text-2xl font-semibold mb-2">{card.title}</h3>
             <p>{card.summary}</p>
@@ -510,38 +547,63 @@ const [activePlant, setActivePlant] = useState(null);
 
 
 
-
-
-
       {/* TESTIMONIALS */}
-        <div className=" rounded-lg bg-darkGreen1 relative overflow-hidden mt-[0px] ">
-        <p className="text-white text-3xl text-center mt-[30px] font-bold ">
-                Why our users love Upliff.
+        <div className=" rounded-lg bg-[#f5f2e8] relative overflow-hidden mt-[0px] ">
+        <p className="text-darkGreen1 text-3xl text-center mt-[50px] mb-[50px] font-bold ">
+                Why Our Users Love Upliff.
               </p>
         {/* Scrolling container */}
-        <div className="flex gap-6 px-6 w-max animate-scroll mt-[20px] mb-[20px] ">
+        <div className="flex gap-6 px-9 w-max animate-scroll mt-[20px] mb-[50px] ">
 
             {[...testimonials, ...testimonials].map((review, index) => (
             <div
                 key={index}
-                className="min-w-[320px] max-w-[320px] bg-white rounded-2xl shadow-lg p-6 text-left"
+                className="min-w-[450px] max-w-[450px] bg-darkGreen1 rounded-2xl shadow-lg p-6 text-left"
             >
-                <p className="text-darkGreen1 text-lg mb-4 leading-relaxed">
+                <p className="text-white text-lg mb-4 leading-relaxed">
                 “{review.text}”
                 </p>
 
-                <p className="text-sm font-semibold text-darkGreen1">
-                — {review.author}
+                <p className="text-m font-semibold text-white">
+                {review.author}
                 </p>
 
-                <p className="text-sm opacity-60">
-                {review.context}
+                <p className="text-sm opacity-60 text-white">
+                {review.role}
                 </p>
             </div>
             ))}
 
         </div>
         </div>
+
+{/* Divider */}
+<div className="w-full flex justify-center">
+  <div className="w-full h-[1px] bg-darkGreen1 opacity-40"></div>
+</div>
+
+
+{/* AS FEATURED ON */}
+<div className="relative bg-cream py-16 overflow-hidden">
+
+  <h2 className="text-3xl font-bold text-center text-darkGreen1 mb-[40px] tracking-wide">
+    As Featured On
+  </h2>
+
+  {/* Fade overlays */}
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-cream to-transparent z-10" />
+  <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-cream to-transparent z-10" />
+
+  {/* Logos Row */}
+  <div className="flex justify-center items-center gap-16 px-16">
+    <img src="/who.png" className="h-20 opacity-90 hover:opacity-100 transition" />
+    <img src="/mha.png" className="h-20 opacity-90 hover:opacity-100 transition" />
+    <img src="/nami.png" className="h-20 opacity-90 hover:opacity-100 transition" />
+    <img src="/apa.png" className="h-20 opacity-90 hover:opacity-100 transition" />
+    <img src="/cdc.png" className="h-20 opacity-90 hover:opacity-100 transition" />
+  </div>
+
+</div>
 
 
     </div>

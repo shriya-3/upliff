@@ -728,11 +728,11 @@ const submit = () => {
               key={t.id}
               className="flex-shrink-0 w-[calc(33.333%-16px)] bg-[#f5f2e8] rounded-xl shadow p-6 flex flex-col"
             >
-              <div className="h-64 overflow-hidden rounded-xl mb-4">
+              <div className="h-80 overflow-hidden rounded-xl mb-4">
                 <img
                   src={t.img}
                   className="w-full h-full object-cover rounded-xl"
-                  style={{ objectPosition: "center 30%" }}
+                  style={{ objectPosition: "center 25%" }}
                   alt={t.name}
                 />
               </div>
