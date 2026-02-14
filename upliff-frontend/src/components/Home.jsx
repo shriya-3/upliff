@@ -417,6 +417,7 @@ const bottomRow = testimonials.slice(6, 12);
                 src={plant.plantImg}
                 className={plant.plantClass}
                 />
+                
 
                 {/* Pot */}
                 <img src={plant.potImg} className={plant.potClass} />
