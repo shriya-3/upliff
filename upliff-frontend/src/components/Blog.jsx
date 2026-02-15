@@ -26,7 +26,7 @@ export default function Blog() {
       id: 1,
       category: "Anxiety",
       title: "Dealing With An Emotional Hangover",
-      minutes: "6 min read",
+      minutes: "3 min read",
       image: "blog1.png",
       content:
 `Emotional hangover, much like being hungover from drinking the night before, is when a person feels physically and emotionally drained in the morning following an emotionally taxing situation.
