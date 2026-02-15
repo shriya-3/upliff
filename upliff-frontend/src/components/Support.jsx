@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CommunityCard from "../parts/CommunityCard.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Support() {
   const [search, setSearch] = useState("");
@@ -39,30 +42,77 @@ export default function Support() {
         </div>
       </div>
 
-      <div className="mt-12 max-w-6xl mx-auto px-6">
-        <input
-          type="text"
-          placeholder="Search communities..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-3 border rounded-xl mb-6 bg-gray-50 focus:outline-blue-400"
-        />
+      <div className="mt-12 max-w-6xl mx-auto">
+        {/* SEARCH BAR */}
+<div className="flex justify-center mb-8">
+  <div className="relative w-full ">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCommunities.map(c => (
-            <Link
-              key={c._id}
-              to={`/community/${c._id}`}   // ✅ REAL MongoDB ID
-            >
-              <CommunityCard
-                name={c.name}
-                description={c.description}
-                id={c._id}
-                image={c.image}
-              />
-            </Link>
-          ))}
-        </div>
+    {/* Icon */}
+    <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">
+      <FontAwesomeIcon icon={faMagnifyingGlass} />
+    </span>
+
+    {/* Input */}
+    <input
+      type="text"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      placeholder="Search Communities"
+      className="
+        w-full
+        h-full
+        pl-12
+        pr-6
+        py-4
+        rounded-full
+        border
+        border-gray-300
+        focus:outline-none
+        focus:ring-2
+        focus:ring-darkGreen1
+        text-darkGreen1
+        placeholder-gray-400
+        bg-white
+        shadow-sm
+      "
+    />
+
+  </div>
+</div>
+
+        {filteredCommunities.length === 0 && search !== "" ? (
+
+  /* NO RESULTS */
+  <div className="flex flex-col items-center justify-center h-[250px] text-darkGreen1 mt-[70px]">
+    <p className="text-2xl font-semibold mb-2 ">No results found</p>
+    <p className="opacity-70 mb-4">
+      Try searching for another community
+    </p>
+    <img
+      src="/noResult.png"
+      alt="No results"
+      className="w-[180px] opacity-80"
+    />
+  </div>
+
+) : (
+
+  /* GRID */
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {filteredCommunities.map(c => (
+      <Link key={c._id} to={`/community/${c._id}`}>
+        <CommunityCard
+          name={c.name}
+          description={c.description}
+          id={c._id}
+          image={c.image}
+        />
+      </Link>
+    ))}
+  </div>
+
+)}
+
       </div>
     </div>
   );

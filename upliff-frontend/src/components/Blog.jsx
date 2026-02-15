@@ -7,17 +7,17 @@ export default function Blog() {
   // Palette A mapping (soft pastel)
   const categoryColor = {
     Anxiety: "bg-red-200",
-    Relationships: "bg-blue-200",
-    "Self-Care": "bg-yellow-200",
+    Relationships: "bg-fuchsia-300",
+    "Self-Care": "bg-cyan-200",
     Depression: "bg-rose-200",
     Digital: "bg-purple-200",
-    Stress: "bg-orange-200",
+    Stress: "bg-lime-200",
     Grief: "bg-slate-200",
     Isolation: "bg-green-200",
-    "Life Transitions": "bg-teal-200",
-    "Older Adults": "bg-emerald-200",
+    "Life Transitions": "bg-yellow-200",
+    "Older Adults": "bg-orange-200",
     Music: "bg-indigo-200",
-    Wellness: "bg-yellow-200"
+    Wellness: "bg-amber-200"
   };
 
   const posts = [
