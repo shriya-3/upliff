@@ -50,15 +50,15 @@ export default function PostPage() {
   if (!post) return <div className="bg-cream text-center mt-20">Loading post...</div>;
 
   return (
-    <div className="max-w-3xl bg-cream mt-14 mx-auto px-6 py-10">
+  <div className="min-h-screen bg-cream mt-14">
+    <div className="max-w-3xl mx-auto px-6 py-10">
       <button
         onClick={() => navigate(`/community/${id}`)}
         className="mb-4 px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg"
       >
         ← Back to Community
       </button>
-      
-      
+
       <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
       <p className="text-gray-700 mb-1">{post.body}</p>
       <p className="text-gray-400 text-sm mb-6">By {post.author}</p>
@@ -103,5 +103,6 @@ export default function PostPage() {
         </button>
       </form>
     </div>
-  );
+  </div>
+);
 }
