@@ -19,7 +19,7 @@ export default function Support() {
   );
   console.log("Filtered Communities:", filteredCommunities);
   return (
-    <div className="w-full bg-gradient-to-r from-blue-100 to-blue-200 py-16 font-lexend h-screen">
+    <div className="w-full bg-gradient-to-r from-blue-100 to-blue-200 py-16 font-lexend min-h-screen">
       <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-8">
         <div className="lg:w-1/2">
           <h1 className="text-4xl text-darkGreen1 md:text-6xl font-bold mb-4 mt-10">
